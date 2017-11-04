@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Navbar from './Navbar.jsx';
 import Dashboard from './Dashboard.jsx';
 
 class Container extends React.Component {
@@ -10,6 +11,7 @@ class Container extends React.Component {
 	render() {
 		return (
 			<div id="container">
+			    <Navbar />
 			    <Dashboard />
 			</div>
 		)

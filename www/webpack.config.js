@@ -2,7 +2,7 @@ const config = {
    entry: './react/Router.js',
 
    output: {
-      path:'.',
+      path:'/Users/Jesse/PycharmProjects/PharmaSuitable/www/index.js',
       filename: 'index.js',
    },
 

@@ -7,8 +7,8 @@ class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<div id="container">
-			    <Dashboard />
+			<div id="dashboard">
+
 			</div>
 		)
 	}
