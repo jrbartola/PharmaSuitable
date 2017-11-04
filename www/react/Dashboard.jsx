@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
 	}
 
 	componentDidMount() {
-        setInterval(() => this.setState({this.getPills()}), 1000)
+        setInterval(() => this.getPills(), 1000)
 	}
 }
 
