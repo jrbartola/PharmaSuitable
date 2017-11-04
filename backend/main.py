@@ -90,9 +90,11 @@ def all_pills():
     return dumps({'data': pills, 'response': 200})
 
 # Ingest the pill, decrement the remaining count and update the last taken field
-@app.route('/api/ingest/<pill_name>', methods=['GET'])
+@app.route('/api/ingest/<pillname>', methods=['GET'])
 @cross_origin()
-def ingest_pill(pill_name):
+def ingest_pill(pillname):
+    pill_name = pillname.title()
+
     from bson.json_util import dumps
     time = datetime.now()
 
@@ -102,9 +104,11 @@ def ingest_pill(pill_name):
     return dumps({'data': pill, 'response': 200})
 
 # Fill the prescription for this pill
-@app.route('/api/refill/<pill_name>', methods=['GET'])
+@app.route('/api/refill/<pillname>', methods=['GET'])
 @cross_origin()
-def refill_pill(pill_name):
+def refill_pill(pillname):
+    pill_name = pillname.title()
+
     from bson.json_util import dumps
     time = datetime.now()
 
