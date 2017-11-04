@@ -1,0 +1,15 @@
+{
+  id: 0,
+  name: "Tylenol",
+  dose: {
+    amount: 800,
+    unit: "mg"
+  },
+  remaining: 2,
+  last_refill: {
+    day: 12,
+    month: 10,
+    year: 2017
+  },
+
+}
