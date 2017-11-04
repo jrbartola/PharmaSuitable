@@ -55,7 +55,7 @@ class Dashboard extends React.Component {
                 if (this.state.selected.name == "null") {
                     this.setState({selected: JSON.parse(data)['data'][0]});
                 } else {
-                    this.setState({selected: this.state.tabs.find(t => t.name == selected.name)});
+                    this.setState({selected: this.state.tabs.find(t => t.name == this.state.selected.name)});
                 }
 
                 this.forceUpdate();
