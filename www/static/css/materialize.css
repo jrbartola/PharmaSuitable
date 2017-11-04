@@ -2013,7 +2013,7 @@ a {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #ee6e73; }
+  border-left: 5px solid #01294d; }
 
 i {
   line-height: inherit; }
@@ -2052,7 +2052,7 @@ video.responsive-video {
   .pagination li.active a {
     color: #fff; }
   .pagination li.active {
-    background-color: #ee6e73; }
+    background-color: #01294d; }
   .pagination li.disabled a {
     cursor: default;
     color: #999; }
@@ -2184,7 +2184,7 @@ ul.staggered-list li {
 .page-footer {
   padding-top: 20px;
   color: #fff;
-  background-color: #ee6e73; }
+  background-color: #01294d; }
   .page-footer .footer-copyright {
     overflow: hidden;
     min-height: 50px;
@@ -3078,7 +3078,7 @@ nav ul a span.badge {
 
 nav {
   color: #fff;
-  background-color: #ee6e73;
+  background-color: #01294d;
   width: 100%;
   height: 56px;
   line-height: 56px; }
@@ -3381,7 +3381,7 @@ small {
 
 .card-panel {
   transition: box-shadow .25s;
-  padding: 24px;
+  padding: 12px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #fff; }
@@ -3393,7 +3393,7 @@ small {
   transition: box-shadow .25s;
   border-radius: 2px; }
   .card .card-title {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 300; }
     .card .card-title.activator {
       cursor: pointer; }
@@ -3461,9 +3461,9 @@ small {
       bottom: 0;
       left: 0;
       max-width: 100%;
-      padding: 24px; }
+      padding: 12px; }
   .card .card-content {
-    padding: 24px;
+    padding: 12px;
     border-radius: 0 0 2px 2px; }
     .card .card-content p {
       margin: 0;
@@ -3478,18 +3478,18 @@ small {
     position: relative;
     background-color: inherit;
     border-top: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 16px 24px; }
+    padding: 16px 12px; }
     .card .card-action:last-child {
       border-radius: 0 0 2px 2px; }
     .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
       color: #ffab40;
-      margin-right: 24px;
+      margin-right: 12px;
       transition: color .3s ease;
       text-transform: uppercase; }
       .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
         color: #ffd8a6; }
   .card .card-reveal {
-    padding: 24px;
+    padding: 12px;
     position: absolute;
     background-color: #fff;
     width: 100%;
@@ -3587,7 +3587,7 @@ small {
     margin: 0;
     text-transform: uppercase; }
     .tabs .tab a {
-      color: rgba(238, 110, 115, 0.7);
+      color: rgba(1, 41, 77, 0.7);
       display: block;
       width: 100%;
       height: 100%;
@@ -3598,15 +3598,15 @@ small {
       transition: color .28s ease; }
       .tabs .tab a:hover, .tabs .tab a.active {
         background-color: transparent;
-        color: #ee6e73; }
+        color: #01294d; }
     .tabs .tab.disabled a, .tabs .tab.disabled a:hover {
-      color: rgba(238, 110, 115, 0.7);
+      color: rgba(1, 41, 77, 0.7);
       cursor: default; }
   .tabs .indicator {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #f6b2b5;
+    background-color: #025199;
     will-change: left, right; }
 
 @media only screen and (max-width: 992px) {
@@ -3709,18 +3709,18 @@ small {
 
 .btn:focus, .btn-large:focus,
 .btn-floating:focus {
-  background-color: #1d7d74; }
+  background-color: #650000; }
 
 .btn, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #980000;
   text-align: center;
   letter-spacing: .5px;
   transition: .2s ease-out;
   cursor: pointer; }
   .btn:hover, .btn-large:hover {
-    background-color: #2bbbad; }
+    background-color: #b20000; }
 
 .btn-floating {
   display: inline-block;
@@ -5295,11 +5295,11 @@ input[type=range]:focus::-ms-fill-upper {
   .table-of-contents a:hover {
     color: #a8a8a8;
     padding-left: 19px;
-    border-left: 1px solid #ee6e73; }
+    border-left: 1px solid #01294d; }
   .table-of-contents a.active {
     font-weight: 500;
     padding-left: 18px;
-    border-left: 2px solid #ee6e73; }
+    border-left: 2px solid #01294d; }
 
 .side-nav {
   position: fixed;
@@ -5347,9 +5347,9 @@ input[type=range]:focus::-ms-fill-upper {
     .side-nav li > a.btn-flat {
       color: #343434; }
     .side-nav li > a.btn:hover, .side-nav li > a.btn-large:hover, .side-nav li > a.btn-large:hover {
-      background-color: #2bbbad; }
+      background-color: #b20000; }
     .side-nav li > a.btn-floating:hover {
-      background-color: #26a69a; }
+      background-color: #980000; }
     .side-nav li > a > i, .side-nav li > a > [class^="mdi-"], .side-nav li > a li > a > [class*="mdi-"], .side-nav li > a > i.material-icons {
       float: left;
       height: 48px;
@@ -5440,7 +5440,7 @@ input[type=range]:focus::-ms-fill-upper {
     padding: 16px 16px 0; } }
 .side-nav .collapsible-body > ul:not(.collapsible) > li.active,
 .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
-  background-color: #ee6e73; }
+  background-color: #01294d; }
   .side-nav .collapsible-body > ul:not(.collapsible) > li.active a,
   .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active a {
     color: #fff; }
@@ -5972,7 +5972,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   font-size: 1rem;
   border-radius: 50%;
-  background-color: #ee6e73;
+  background-color: #01294d;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;

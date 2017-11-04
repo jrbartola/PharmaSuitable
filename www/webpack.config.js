@@ -2,13 +2,15 @@ const config = {
    entry: './react/Router.js',
 
    output: {
-      path:'/Users/Jesse/PycharmProjects/PharmaSuitable/www/index.js',
+      path:'/Users/Jesse/PycharmProjects/PharmaSuitable/www',
       filename: 'index.js',
    },
 
    devServer: {
       inline: true,
-      port: 8080
+      port: 8080,
+      contentBase: "./static",
+      hot: true
    },
 
    module: {

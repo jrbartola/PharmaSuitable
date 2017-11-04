@@ -11,7 +11,7 @@ class Container extends React.Component {
 	render() {
 		return (
 			<div id="container">
-			    <Navbar />
+			    <Navbar outer={true} />
 			    <Dashboard />
 			</div>
 		)
