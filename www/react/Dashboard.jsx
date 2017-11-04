@@ -52,6 +52,7 @@ class Dashboard extends React.Component {
                 console.err(err);
             } else {
                 this.setState({tabs: JSON.parse(data), selected: data[0]});
+                this.forceUpdate();
             }
         });
 	}

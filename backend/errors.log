@@ -129,3 +129,102 @@ Traceback (most recent call last):
   File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 61, in all_pills
     pills = pills.sort("next_dose", 1)#sorted(pills, key=lambda k: k['next_dose']['hour'])
 TypeError: must use keyword argument for key function
+2017-11-04 16:48:34,652 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask_cors/decorator.py", line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "main.py", line 67, in all_pills
+    pills = list(db.pills.find())
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 1132, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 1055, in _refresh
+    self.__collation))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 892, in __send_message
+    **kwargs)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/mongo_client.py", line 933, in _send_message_with_response
+    server = topology.select_server(selector)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/topology.py", line 214, in select_server
+    address))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/topology.py", line 189, in select_servers
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 61] Connection refused
+2017-11-04 16:49:52,739 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask_cors/decorator.py", line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "main.py", line 67, in all_pills
+    pills = list(db.pills.find())
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 1132, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 1055, in _refresh
+    self.__collation))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 892, in __send_message
+    **kwargs)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/mongo_client.py", line 933, in _send_message_with_response
+    server = topology.select_server(selector)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/topology.py", line 214, in select_server
+    address))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/topology.py", line 189, in select_servers
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 61] Connection refused
+2017-11-04 16:50:23,012 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask_cors/decorator.py", line 128, in wrapped_function
+    resp = make_response(f(*args, **kwargs))
+  File "main.py", line 67, in all_pills
+    pills = list(db.pills.find())
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 1132, in next
+    if len(self.__data) or self._refresh():
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 1055, in _refresh
+    self.__collation))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 892, in __send_message
+    **kwargs)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/mongo_client.py", line 933, in _send_message_with_response
+    server = topology.select_server(selector)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/topology.py", line 214, in select_server
+    address))
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/topology.py", line 189, in select_servers
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 61] Connection refused

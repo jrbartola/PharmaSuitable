@@ -16,7 +16,7 @@ class InfoPane extends React.Component {
 
 	render() {
 
-	    const remainingFraction = (this.props.selected.count / 30.0) * 100;
+	    const remainingFraction = (this.props.selected.remaining / 30.0) * 100;
 	    const remainingColor = remainingFraction <= 17.0 ? "red" : (remainingFraction <= 33.0 ? "orange" : "");
 
 
@@ -25,6 +25,8 @@ class InfoPane extends React.Component {
 
 	    const today = new Date().getDay();
 	    const streaks = this.rotateArray(today);
+
+	    console.log(this.props.selected);
 
 		return (
 			<div id="infopane">
@@ -36,7 +38,7 @@ class InfoPane extends React.Component {
                       <span className="card-title">Remaining
                       <i className="material-icons right right-padding">bubble_chart</i>
                       </span>
-                      <p>{this.props.selected.count} out of 30</p>
+                      <p>{this.props.selected.remaining} out of 30</p>
                     </div>
                     <div className="card-action">
                       <div className="progress">
@@ -50,7 +52,7 @@ class InfoPane extends React.Component {
                       <span className="card-title">Last Fill
                       <i className="material-icons right right-padding">access_time</i>
                       </span>
-                      <p>{this.props.selected.fill}</p>
+                      <p></p>
                     </div>
                     <div className="card-action">
                       <div className="progress">
