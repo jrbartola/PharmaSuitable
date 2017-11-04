@@ -4,6 +4,9 @@ import React from 'react';
 class ModuleCollectionItem extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.getRandomInt = this.getRandomInt.bind(this);
+
 	}
 
 	render() {
@@ -17,6 +20,11 @@ class ModuleCollectionItem extends React.Component {
             </li>
 		)
 	}
+
+	getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
 }
 
 export default ModuleCollectionItem;

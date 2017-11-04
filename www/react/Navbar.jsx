@@ -21,7 +21,7 @@ class Navbar extends React.Component {
               {!this.props.outer &&
                 <div className="nav-wrapper inner">
                   <img src="../img/pill_drawing.png" className="cross-logo" />
-                  <a href="#" className="brand-logo">{this.props.selected.pill}</a>
+                  <a href="#" className="brand-logo">{this.props.selected.name}</a>
                   <span className="right right-padding">
                     <a className="waves-effect waves-light btn">Order</a>
                   </span>

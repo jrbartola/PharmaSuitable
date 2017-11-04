@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
             if (err.status != 200) {
                 console.err(err);
             } else {
-                this.setState({tabs: JSON.parse(data), selected: data[0]});
+                this.setState({tabs: JSON.parse(data), selected: JSON.parse(data)[0]});
                 this.forceUpdate();
             }
         });
