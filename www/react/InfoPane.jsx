@@ -10,7 +10,9 @@ class InfoPane extends React.Component {
 		this.rotateArray = this.rotateArray.bind(this);
 
 		this.state = {
-		    days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+		    days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+		    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+		             "October", "November", "December"]
 		}
 	}
 
@@ -52,7 +54,7 @@ class InfoPane extends React.Component {
                       <span className="card-title">Last Fill
                       <i className="material-icons right right-padding">access_time</i>
                       </span>
-                      <p></p>
+                      <p>{this.state.months[this.props.selected.month] + " " + this.props.selected.day}</p>
                     </div>
                     <div className="card-action">
                       <div className="progress">

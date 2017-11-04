@@ -1,10 +1,11 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 class Navbar extends React.Component {
 	constructor(props) {
 		super(props);
 
-		//this.state.outer = props.outer;
+		this.makeOrder = this.makeOrder.bind(this);
 	}
 
 	render() {
@@ -23,12 +24,16 @@ class Navbar extends React.Component {
                   <img src="../img/pill_drawing.png" className="cross-logo" />
                   <a href="#" className="brand-logo">{this.props.selected.name}</a>
                   <span className="right right-padding">
-                    <a className="waves-effect waves-light btn">Order</a>
+                    <a className="waves-effect waves-light btn modal-trigger" onClick={this.makeOrder}>Order</a>
                   </span>
                 </div>
               }
             </nav>
 		)
+	}
+
+	makeOrder() {
+	    swal("Success!", "Your order has been placed at CVS Pharmacy on 76 N Pleasant St.", "success");
 	}
 }
 
