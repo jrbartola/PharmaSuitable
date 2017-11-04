@@ -46,7 +46,7 @@ class Dashboard extends React.Component {
 	}
 
 	getPills() {
-        $.get("http://localhost:3000/api/pills", (data, _, err) => {
+        $.get("http://127.0.0.1:3000/api/pills", (data, _, err) => {
             console.log(data);
             if (err.status != 200) {
                 console.err(err);
