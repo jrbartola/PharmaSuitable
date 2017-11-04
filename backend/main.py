@@ -81,7 +81,7 @@ def all_pills():
     # Sort in order of next dose
     pills = sorted(pills, key=lambda k: k['next_dose']['hour'])
 
-    return dumps(pills)
+    return dumps({'data': pills, 'response': 200})
 
 # Ingest the pill, decrement the remaining count and update the last taken field
 @app.route('/api/ingest/<pill_name>', methods=['GET'])
