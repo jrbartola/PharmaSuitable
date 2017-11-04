@@ -49,7 +49,7 @@ def pill_route(pillname):
                 pill['color'] = 'green'
 
             pill['next_dose'] = time_until_next_dose(pill['dose_time'])
-            pill['time_since_refill'] = time_since_refill(pill['last_refill'])
+            pill['time_since_refill'] = time_since_refill(int(pill['last_refill']))
 
         return dumps({'data': pill, 'response': response})
 
@@ -74,7 +74,7 @@ def all_pills():
     for p in pills:
         # Add a field indicating how much time is left until the next dose
         p['next_dose'] = time_until_next_dose(p['dose_time'])
-        p['time_since_refill'] = time_since_refill(p['last_refill'])
+        p['time_since_refill'] = time_since_refill(int(p['last_refill']))
 
         if p['remaining'] <= 5:
             p['color'] = 'red'

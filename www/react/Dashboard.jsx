@@ -56,6 +56,10 @@ class Dashboard extends React.Component {
             }
         });
 	}
+
+	componentDidMount() {
+        setInterval(() => this.setState({ time: Date.now()}), 1000)
+	}
 }
 
 export default Dashboard;
