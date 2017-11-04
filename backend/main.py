@@ -29,10 +29,10 @@ def hello():
 # API Route for pill information
 @app.route('/api/pills/<pill_name>', methods=['GET', 'PUT', 'DELETE'])
 @cross_origin()
-def pill_route(pill_name):
+def pill_route(pill_name_):
     from bson.json_util import dumps
 
-    pill_name = pill_name.title()
+    pill_name = pill_name_.title()
 
     if request.method == 'GET':
         pill = db.pills.find_one({'name': pill_name})
