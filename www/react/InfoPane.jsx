@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Navbar from './Navbar.jsx';
+import LexBox from './LexBox.jsx';
 
 class InfoPane extends React.Component {
 	constructor(props) {
@@ -75,7 +76,10 @@ class InfoPane extends React.Component {
                       </div>
                     </div>
                   </div>
+
+
               </div>
+              <LexBox />
 			</div>
 		)
 	}
