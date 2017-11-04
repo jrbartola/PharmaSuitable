@@ -23,7 +23,7 @@ class InfoPane extends React.Component {
 	    const remainingStyle = {width: remainingFraction + "%",
 	                            backgroundColor: remainingColor + " !important"};
 
-	    const today = this.state.days[new Date().getDay()];
+	    const today = new Date().getDay();
 	    const streaks = this.rotateArray(today);
 
 		return (
@@ -64,7 +64,9 @@ class InfoPane extends React.Component {
                       <span className="card-title">Streak
                         <div className="streak">
                           {streaks.map((s, i) =>
-                            <div key={i + "str"} style={{backgroundColor: i % 2 == 0 ? "red" : ""}}>s</div>
+                            <div key={i + "str"} style={{backgroundColor: Math.random() <= 0.5 ? "red" : ""}}>
+                              <p>{s}</p>
+                            </div>
                           )}
                         </div>
                       </span>

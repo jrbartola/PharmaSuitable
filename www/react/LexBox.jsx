@@ -14,7 +14,7 @@ class LexBox extends React.Component {
               <div className="row">
                 <div className="input-field">
                   <i className="material-icons prefix">help_outline</i>
-                  <textarea id="icon_prefix2" rows="5" className="materialize-textarea">sadfjlk</textarea>
+                  <textarea id="icon_prefix2" rows="5" className="materialize-textarea"></textarea>
                   <label htmlFor="icon_prefix2">{"Hi! I'm Lex. Ask me anything!"}</label>
                 </div>
               </div>

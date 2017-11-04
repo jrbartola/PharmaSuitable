@@ -32,7 +32,7 @@ class Collection extends React.Component {
                 {!this.props.schedule &&
                   <div>
                     {this.props.tabs.map((t, i) =>
-                      <ModuleCollectionItem key={i + "x"} image={t.image} description={t.description} title={t.title} />
+                      <ModuleCollectionItem key={i + "x"} image={t.image} description={t.description} title={t.title} data={t.data} />
                     )}
                     <li>
                      <div className="collapsible-header add-tab"><i className="material-icons">add</i>Add Module</div>

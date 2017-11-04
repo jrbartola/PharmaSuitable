@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 
 from datetime import datetime
@@ -7,6 +8,9 @@ client = MongoClient()
 db = client.pharm
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 if app.debug is not True:
     import logging
@@ -24,6 +28,7 @@ def hello():
 
 # API Route for pill information
 @app.route('/api/<pill_name>', methods=['GET', 'PUT', 'DELETE'])
+@cross_origin()
 def pill_route(pill_name):
     from bson.json_util import dumps
 
@@ -49,6 +54,7 @@ def pill_route(pill_name):
 
 # API Route for pill information
 @app.route('/api/pills', methods=['GET'])
+@cross_origin()
 def all_pills():
     from bson.json_util import dumps
     pills = list(db.pills.find())
@@ -64,6 +70,7 @@ def all_pills():
 
 # Ingest the pill, decrement the remaining count and update the last taken field
 @app.route('/api/ingest/<pill_name>', methods=['GET'])
+@cross_origin()
 def ingest_pill(pill_name):
     from bson.json_util import dumps
     time = datetime.now()
@@ -75,6 +82,7 @@ def ingest_pill(pill_name):
 
 # Fill the prescription for this pill
 @app.route('/api/refill/<pill_name>', methods=['GET'])
+@cross_origin()
 def refill_pill(pill_name):
     from bson.json_util import dumps
     time = datetime.now()
