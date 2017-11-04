@@ -54,7 +54,7 @@ class InfoPane extends React.Component {
                       <span className="card-title">Last Fill
                       <i className="material-icons right right-padding">access_time</i>
                       </span>
-                      <p>{this.state.months[this.props.selected.month] + " " + this.props.selected.day}</p>
+                      <p>{this.state.months[this.props.selected.last_refill.month] + " " + this.props.selected.last_refill.day}</p>
                     </div>
                     <div className="card-action">
                       <div className="progress">

@@ -48,6 +48,8 @@ def pill_route(pillname):
             else:
                 pill['color'] = 'green'
 
+            pill['next_dose'] = time_until_next_dose(pill['dose_time'])
+
         return dumps({'data': pill, 'response': response})
 
     elif request.method == 'PUT':
