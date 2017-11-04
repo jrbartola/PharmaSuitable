@@ -49,7 +49,7 @@ def pill_route(pillname):
                 pill['color'] = 'green'
 
             pill['next_dose'] = time_until_next_dose(pill['dose_time'])
-            pill['time_since_refill'] = time_since_refill(int(pill['last_refill']))
+            pill['time_since_refill'] = time_since_refill(pill['last_refill'])
 
         return dumps({'data': pill, 'response': response})
 
@@ -132,7 +132,7 @@ def time_since_refill(last_refill):
     day, month, year = last_refill['day'], last_refill['month'], last_refill['year']
     time = datetime.now()
 
-    td = time - datetime(year, month, day)
+    td = time - datetime(int(year), int(month), int(day))
 
     return td.days
 
