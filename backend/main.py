@@ -51,24 +51,36 @@ def pill_route(pill_name):
 @app.route('/api/pills', methods=['GET'])
 def all_pills():
     from bson.json_util import dumps
-    pills = db.pills.find()
+    pills = list(db.pills.find())
+
     for p in pills:
         # Add a field indicating how much time is left until the next dose
         p['next_dose'] = time_until_next_dose(p['dose_time'])
 
     # Sort in order of next dose
-    pills = sorted(pills, key=lambda k: k['next_dose'])
+    pills = sorted(pills, key=lambda k: k['next_dose']['hour'])
 
     return dumps(pills)
 
 # Ingest the pill, decrement the remaining count and update the last taken field
 @app.route('/api/ingest/<pill_name>', methods=['GET'])
-def all_pills(pill_name):
+def ingest_pill(pill_name):
     from bson.json_util import dumps
     time = datetime.now()
 
     pill = db.pills.find_one_and_update({'name': pill_name}, {'$inc': {'remaining': -1}, '$set': {'last_taken':
                                         {'minute': time.minute, 'hour': time.hour, 'day': time.day, 'month': time.month}}})
+
+    return dumps({'data': pill, 'response': 200})
+
+# Fill the prescription for this pill
+@app.route('/api/refill/<pill_name>', methods=['GET'])
+def refill_pill(pill_name):
+    from bson.json_util import dumps
+    time = datetime.now()
+
+    pill = db.pills.find_one_and_update({'name': pill_name}, {'$set': {'last_refill':
+            {'day': time.day, 'month': time.month, 'year': time.year}, 'remaining': 30}})
 
     return dumps({'data': pill, 'response': 200})
 
@@ -79,10 +91,10 @@ def time_until_next_dose(dose_time):
 
     # If we have yet to take the pill today
     if hour >= time.hour and minute >= time.minute:
-        td = datetime(time.year, time.month, time.day, hour, minute) - time
+        td = datetime(time.year, time.month, time.day, int(hour), int(minute)) - time
         next_dose = {'hour': int(td.seconds / 3600), 'minute': int(td.seconds / 60 % 60)}
     else:
-        td = datetime(time.year, time.month, time.day + 1, hour, minute) - time
+        td = datetime(time.year, time.month, int(time.day + 1), int(hour), int(minute)) - time
         next_dose = {'hour': int(td.seconds / 3600), 'minute': int(td.seconds / 60 % 60)}
 
     return next_dose

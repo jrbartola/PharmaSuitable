@@ -1,0 +1,131 @@
+2017-11-04 14:52:51,458 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 57, in all_pills
+    p['next_dose'] = time_until_next_dose(p['dose_time'])
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 96, in time_until_next_dose
+    td = datetime(time.year, time.month, time.day + 1, hour, minute) - time
+TypeError: integer argument expected, got float
+2017-11-04 14:59:33,011 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 57, in all_pills
+    p['next_dose'] = time_until_next_dose(p['dose_time'])
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 96, in time_until_next_dose
+    td = datetime(time.year, time.month, time.day + 1, hour, minute) - time
+TypeError: integer argument expected, got float
+2017-11-04 15:04:39,255 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 54, in all_pills
+    pills = db.pills.find().sort()
+TypeError: sort() missing 1 required positional argument: 'key_or_list'
+2017-11-04 15:10:27,750 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 61, in all_pills
+    pills = sorted(pills.iteritems(), key=lambda k: k['next_dose']['hour'])
+AttributeError: 'Cursor' object has no attribute 'iteritems'
+2017-11-04 15:11:17,661 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 61, in all_pills
+    pills = pills.sort("next_dose", 1)#sorted(pills, key=lambda k: k['next_dose']['hour'])
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 675, in sort
+    self.__check_okay_to_chain()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 361, in __check_okay_to_chain
+    raise InvalidOperation("cannot set options after executing query")
+pymongo.errors.InvalidOperation: cannot set options after executing query
+2017-11-04 15:11:18,854 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 61, in all_pills
+    pills = pills.sort("next_dose", 1)#sorted(pills, key=lambda k: k['next_dose']['hour'])
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 675, in sort
+    self.__check_okay_to_chain()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/pymongo/cursor.py", line 361, in __check_okay_to_chain
+    raise InvalidOperation("cannot set options after executing query")
+pymongo.errors.InvalidOperation: cannot set options after executing query
+2017-11-04 15:12:25,890 - __main__ - ERROR - Exception on /api/pills [GET]
+Traceback (most recent call last):
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Jesse/miniconda3/envs/cs383/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Jesse/PycharmProjects/PharmaSuitable/backend/main.py", line 61, in all_pills
+    pills = pills.sort("next_dose", 1)#sorted(pills, key=lambda k: k['next_dose']['hour'])
+TypeError: must use keyword argument for key function
