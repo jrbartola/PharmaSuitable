@@ -3,6 +3,10 @@
 $primary-color: #01294d;
 $secondary-color: #980000;
 
+body {
+  background-color: #eee;
+}
+
 .cross-logo {
   margin-top: 5px;
   margin-left: 20px;
@@ -46,4 +50,38 @@ $secondary-color: #980000;
 
 .selected {
   background-color: grey !important;
+}
+
+.info-body {
+  margin-top: 15px;
+  //height: 500px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.split-left {
+  margin-right: 20px;
+  width: 50%;
+}
+
+.split-right {
+  margin-left: 20px;
+  width: 50%;
+}
+
+.panel {
+  flex-basis: 48%;
+}
+
+.panel-large {
+  flex-basis: 100%;
+}
+
+.streak {
+  display: flex;
 }
