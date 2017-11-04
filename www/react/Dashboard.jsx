@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
 
 		this.state = {
 		  tabs: [],
-		  selected: {last_refill: {month: -1, day: -1, year: -1}},
+		  selected: {name: "null", last_refill: {month: -1, day: -1, year: -1}},
 		  modules: [
 		      {title: "Temperature", data: "98.6", image: "temp.png"},
 		      {title: "Heart Rate", data: "82", image: "heartrate.png"}
@@ -51,7 +51,13 @@ class Dashboard extends React.Component {
             if (err.status != 200) {
                 console.err(err);
             } else {
-                this.setState({tabs: JSON.parse(data)['data'], selected: JSON.parse(data)['data'][0]});
+                this.setState({tabs: JSON.parse(data)['data']});
+                if (this.state.selected.name == "null") {
+                    this.setState({selected: JSON.parse(data)['data'][0]});
+                } else {
+                    this.setState({selected: this.state.tabs.find(t => t.name == selected.name)});
+                }
+
                 this.forceUpdate();
             }
         });
