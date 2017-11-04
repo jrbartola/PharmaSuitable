@@ -38,6 +38,13 @@ def pill_route(pill_name):
 
         if pill is None:
             response = 404
+        else:
+            if pill['remaining'] <= 5:
+                pill['color'] = 'red'
+            elif pill['remaining'] <= 10:
+                pill['color'] = 'orange'
+            else:
+                pill['color'] = 'green'
 
         return dumps({'data': pill, 'response': response})
 
@@ -62,6 +69,12 @@ def all_pills():
     for p in pills:
         # Add a field indicating how much time is left until the next dose
         p['next_dose'] = time_until_next_dose(p['dose_time'])
+        if p['remaining'] <= 5:
+            p['color'] = 'red'
+        elif p['remaining'] <= 10:
+            p['color'] = 'orange'
+        else:
+            p['color'] = 'green'
 
     # Sort in order of next dose
     pills = sorted(pills, key=lambda k: k['next_dose']['hour'])
