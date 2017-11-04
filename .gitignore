@@ -2,3 +2,4 @@
 .sass-cache/
 www/node_modules
 backend/errors.log
+www/webpack.config.js
