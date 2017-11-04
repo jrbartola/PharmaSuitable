@@ -25,10 +25,12 @@ class InfoPane extends React.Component {
 	    const remainingStyle = {width: remainingFraction + "%",
 	                            backgroundColor: remainingColor + " !important"};
 
+        const tsinre = this.props.selected.time_since_refill ? this.props.selected.time_since_refill : 0;
+
+	    const sinceRefillPercent = ( tsinre / 30.0 ) * 100.0;
+
 	    const today = new Date().getDay();
 	    const streaks = this.rotateArray(today);
-
-	    console.log("SELECTED", this.props.selected);
 
 		return (
 			<div id="infopane">
@@ -58,7 +60,7 @@ class InfoPane extends React.Component {
                     </div>
                     <div className="card-action">
                       <div className="progress">
-                        <div className="determinate" style={{width: "90%"}}></div>
+                        <div className="determinate" style={{width: sinceRefillPercent + "%"}}></div>
                       </div>
                     </div>
                   </div>
