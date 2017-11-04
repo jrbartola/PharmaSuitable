@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
 
 		this.state = {
 		  tabs: [],
-		  selected: {},
+		  selected: {last_refill: {month: -1, day: -1, year: -1}},
 		  modules: [
 		      {title: "Temperature", data: "98.6", image: "temp.png"},
 		      {title: "Heart Rate", data: "82", image: "heartrate.png"}
@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
             if (err.status != 200) {
                 console.err(err);
             } else {
-                this.setState({tabs: JSON.parse(data), selected: JSON.parse(data)[0]});
+                this.setState({tabs: JSON.parse(data)['data'], selected: JSON.parse(data)['data'][0]});
                 this.forceUpdate();
             }
         });

@@ -28,7 +28,7 @@ class InfoPane extends React.Component {
 	    const today = new Date().getDay();
 	    const streaks = this.rotateArray(today);
 
-	    console.log(this.props.selected);
+	    console.log("SELECTED", this.props.selected);
 
 		return (
 			<div id="infopane">

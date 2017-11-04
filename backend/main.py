@@ -49,6 +49,7 @@ def pill_route(pillname):
                 pill['color'] = 'green'
 
             pill['next_dose'] = time_until_next_dose(pill['dose_time'])
+            pill['time_since_refill'] = time_since_refill(pill['last_refill'])
 
         return dumps({'data': pill, 'response': response})
 
@@ -73,12 +74,15 @@ def all_pills():
     for p in pills:
         # Add a field indicating how much time is left until the next dose
         p['next_dose'] = time_until_next_dose(p['dose_time'])
+        p['time_since_refill'] = time_since_refill(p['last_refill'])
+
         if p['remaining'] <= 5:
             p['color'] = 'red'
         elif p['remaining'] <= 10:
             p['color'] = 'orange'
         else:
             p['color'] = 'green'
+
 
     # Sort in order of next dose
     pills = sorted(pills, key=lambda k: k['next_dose']['hour'])
@@ -124,8 +128,15 @@ def time_until_next_dose(dose_time):
 
     return next_dose
 
+def time_since_refill(last_refill):
+    day, month, year = last_refill['day'], last_refill['month'], last_refill['year']
+    time = datetime.now()
+
+    td = time - datetime(year, month, day)
+
+    return td.days
 
 
 # Run the server on port 3000
 if __name__ == "__main__":
-    app.run(debug=False, port=3000)
+    app.run(debug=False, port=3000, host='0.0.0.0')
