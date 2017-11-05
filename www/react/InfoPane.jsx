@@ -24,6 +24,7 @@ class InfoPane extends React.Component {
 
 	    const remainingStyle = {width: remainingFraction + "%",
 	                            backgroundColor: remainingColor + " !important"};
+        console.log("YESYESYES", this.props.selected);
 
         const tsinre = this.props.selected.time_since_refill ? this.props.selected.time_since_refill : 0;
 
