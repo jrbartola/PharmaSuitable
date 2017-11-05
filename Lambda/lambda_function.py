@@ -15,9 +15,12 @@ import os
 import dateutil.parser
 import logging
 import requests
+import datetime
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
+
+APIEndpoint = "http://18.221.211.47:3000/api"
 
 
 # --- Helpers that build all of the responses ---
@@ -114,6 +117,36 @@ def build_validation_result(isvalid, violated_slot, message_content):
         'violatedSlot': violated_slot,
         'message': {'contentType': 'PlainText', 'content': message_content}
     }
+
+def validate_medicine_color(slots):
+    med_options = ["pink", "white"]
+    if slots.get('color').lower() is not None and not slots.get('color').lower() in med_options:
+        return build_validation_result(
+    False,
+    'color',
+    "Sorry, we don't have any {} medicine on file. Perhaps try a simpler color, like blue or white, next time?".format(slots.get('color')))
+
+    return {'isValid':True}
+
+def validate_medicine_shape(slots):
+    med_options = ["circle", "oval", "capsule"]
+    if slots.get('shape').lower() is not None and not slots.get('shape').lower() in med_options:
+        return build_validation_result(
+    False,
+    'shape',
+    "Sorry, we don't have any {}-shaped medicine on file. Try something like circular, oblong, or capsular.".format(slots.get('med')))
+
+    return {'isValid':True}
+
+def validate_medicine_type(slots):
+    med_options = ["Tylenol", "Benadryl", "Tramadol"]
+    if slots.get('med') is not None and not slots.get('med') in med_options:
+        return build_validation_result(
+    False,
+    'med',
+    "Sorry, we don't currently support {} as a valid medicine. Perhaps try a different medicine?".format(slots.get('med')))
+
+    return {'isValid':True}
 
 def validate_book_car(slots):
     pickup_city = try_ex(lambda: slots['PickUpCity'])
@@ -269,20 +302,132 @@ def book_hotel(intent_request):
         }
     )
 
+def get_next_refill_days(intent_request):
+    slots = intent_request['currentIntent']['slots']
+    session_attributes = intent_request['sessionAttributes'] if intent_request['sessionAttributes'] is not None else {}
+    
+    validation_result = validate_medicine_type(intent_request['currentIntent']['slots'])
+    if not validation_result['isValid']:
+        slots = intent_request['currentIntent']['slots']
+        slots[validation_result['violatedSlot']] = None
+        return elicit_slot(
+            session_attributes,
+            intent_request['currentIntent']['name'],
+            slots,
+            validation_result['violatedSlot'],
+            validation_result['message']
+        )
+    
+    resp = requests.get(APIEndpoint + "/pills/" + slots['med']).json()
+    #resp = requests.get("https://raw.githubusercontent.com/jrbartola/Trump-Bingo/master/Lambda/testdata.json").json()
+
+    if resp['response'] == 200:
+        days = resp['data']['remaining']
+	
+        if days == 0:
+            retString = "You are out of pills."
+        elif days == 1:
+            retString = "You've got a day until you need a refill."
+        else:
+            retString = "You've got " + str(days)[:-2] + " days left until you need a refill."
+    else:
+        retString = "Sorry, something went wrong."
+
+    return close(
+    session_attributes,
+        'Fulfilled',
+        {
+            'contentType': 'PlainText',
+            'content': retString
+        }
+    )
+
 def get_next_dose_time(intent_request):
     slots = intent_request['currentIntent']['slots']
     session_attributes = intent_request['sessionAttributes'] if intent_request['sessionAttributes'] is not None else {}
     
+    validation_result = validate_medicine_type(intent_request['currentIntent']['slots'])
+    if not validation_result['isValid']:
+        slots = intent_request['currentIntent']['slots']
+        slots[validation_result['violatedSlot']] = None
+        return elicit_slot(
+            session_attributes,
+            intent_request['currentIntent']['name'],
+            slots,
+            validation_result['violatedSlot'],
+            validation_result['message']
+        )
     
+    resp = requests.get(APIEndpoint + "/pills/" + slots['med']).json()
+    #resp = requests.get("https://raw.githubusercontent.com/jrbartola/Trump-Bingo/master/Lambda/testdata.json").json()
+
+    #if resp['response'] == 200:
+    timeTo = resp['data']['next_dose']
+    timeOf = resp['data']['dose_time']
+
+    minsToTimeOf = str(timeOf['minute'])
+    if len(minsToTimeOf) == 1:
+        minsToTimeOf = "0" + minsToTimeOf
+
+    retString = "You need to take " + slots['med'] + " in " + str(timeTo['hour']) + " hours and " + str(timeTo['minute']) + " minutes, at " + str(timeOf['hour']-4) + ":" + minsToTimeOf
     
     return close(
     session_attributes,
         'Fulfilled',
         {
             'contentType': 'PlainText',
-            'content': 'test kek'
+            'content': retString
         }
     )
+
+def identify_pill(intent_request):
+    slots = intent_request['currentIntent']['slots']
+    session_attributes = intent_request['sessionAttributes'] if intent_request['sessionAttributes'] is not None else {}
+    slots['color'] = slots['color'].lower()
+    slots['shape'] = slots['shape'].lower()
+    color = slots['color']
+    shape = slots['shape']
+
+    validation_result = validate_medicine_color(slots)
+    if not validation_result['isValid']:
+        slots = intent_request['currentIntent']['slots']
+        slots[validation_result['violatedSlot']] = None
+        return elicit_slot(
+            session_attributes,
+            intent_request['currentIntent']['name'],
+            slots,
+            validation_result['violatedSlot'],
+            validation_result['message']
+        )
+    
+    validation_result = validate_medicine_shape(slots)
+    if not validation_result['isValid']:
+        slots = intent_request['currentIntent']['slots']
+        slots[validation_result['violatedSlot']] = None
+        return elicit_slot(
+            session_attributes,
+            intent_request['currentIntent']['name'],
+            slots,
+            validation_result['violatedSlot'],
+            validation_result['message']
+        )
+    
+    resp = requests.get(APIEndpoint + "/identify/" + slots['shape'] + "/" + slots['color']).json()
+
+    if resp['response'] == 404:
+        retString = "It doesn't seem that we have a pill matching that description."
+    else:
+        retString = "The pill you're describing sounds like " + resp['data']['name'] + ", which " + resp['data']['description'] + "."
+
+    return close(
+    session_attributes,
+        'Fulfilled',
+        {
+            'contentType': 'PlainText',
+            'content': retString
+        }
+    )
+
 
 def book_car(intent_request):
     """
@@ -458,9 +603,9 @@ def dispatch(intent_request):
     elif intent_name == "NextDoseTime":
         return get_next_dose_time(intent_request)
     elif intent_name == "NextRefill":
-        return get_next_refill(intent_request)
-    elif intent_name == "SufficientStock":
-        return get_sufficient_stock(intent_request)
+        return get_next_refill_days(intent_request)
+    elif intent_name == "IdentifyPill":
+        return identify_pill(intent_request)
     #elif intent_name == "DoseFrequency":
     #    return get_dose_frequency 
     
