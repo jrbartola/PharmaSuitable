@@ -90,7 +90,7 @@ class Dashboard extends React.Component {
         setInterval(() => {
           this.getPills();
           this.getTemperature();
-        }, 1000)}
+        }, 1000);
 	}
 }
 
