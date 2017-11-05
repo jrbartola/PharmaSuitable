@@ -45,7 +45,7 @@ id` (int): unique identifier assigned to pill
  #### `GET: /api/pill/\<pill name>`
  >**Returns** the pill entry of a pill (see pill entry schema)
  #### `GET: /api/pills`
- >**Returns** an array of all pill entries in the web interface (see pill entry schema)
+ >**Returns** an array of all pill entries on the server (see pill entry schema)
  #### `GET: /api/ingest/\<pill name>`
  >Tells the web server that a pill has been removed from the pill box, causing the pill's data to be updated. **Returns** the pill's data from before the update (see pill entry schema)
  #### `GET: /api/refill/\<pill name>`
@@ -56,3 +56,13 @@ id` (int): unique identifier assigned to pill
  >Tells the web server the most recent measurement of the subject's temperature. **Returns** the temperature value which was sent to the server back to the user
   
  
+## Examples
+### Search for a pill on the server (Python 3)
+```
+import requests
+serverDomain = "<your server domain here>"
+shape = input("What is the shape of your pill?\n")
+color = input("What color is your pill?\n")
+r = requests.get(serverDomain + '/api/temperature/' + shape/' + 'color'
+print("Your pill is: " + r.json()['data']['name']")
+```
