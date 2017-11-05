@@ -19,26 +19,26 @@ id` (int): unique identifier assigned to pill
 
 `description` (string): description of the pill and what it is used for
 
-`last_refill` (dictionary): contains the last time that during which the pill's supply was refilled
+`last_refill` (dictionary): contains the last time that during which the pill's supply was refilled:
 
     * `month` (int): month of the time during which the pill's supply was refilled (note: this is zero indexed)
     * `day` (int): day of the time during which the pill's supply was refilled (note: this is zero indexed)
     * `year` (int): year of the time during whch the pill's supply was refilled
     
-`next_dose` (dictionary): contains the daily time on during which the pill is scheduled to be taken
+`next_dose` (dictionary): contains the daily time on during which the pill is scheduled to be taken:
 
     * `hour` (int): hour of the scheduled time
     * `minute` (int): minute of the scheduled time
     
 `time_since_refill` (int): number of days since the pill's supply was refilled
 
-`dose` (dictionary): the daily dosage of the pill
+`dose` (dictionary): the daily dosage of the pill:
     * `amount` (int): mass of pill
     * `unit` (int): unit of the mass of he pill
     
 `shape` (string): description of the shape of the pill
 
-`last_taken` (dictionary): contains the time during which the pill was last taken
+`last_taken` (dictionary): contains the time during which the pill was last taken:
 
     * `hour` (int): hour of the time during which the pill was last taken
     * `minute` (int): minute of the time during which the pill was last taken
