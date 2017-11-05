@@ -155,9 +155,20 @@ def identify_pill(shape, color):
 def send_temperature(temp):
     from bson.json_util import dumps
 
-    data_temp = db.temp.insert_one({'value': temp})
+    db.temp.insert_one({'value': temp, 'time': datetime.now()})
 
-    return dumps({'data': data_temp, 'response': 200})
+    return dumps({'data': temp, 'response': 200})
+
+# API Route for getting the most recent temperature data
+@app.route('/api/temperature', methods=['GET'])
+@cross_origin()
+def get_temperature():
+    from bson.json_util import dumps
+
+    # Get most recent temperature in the database
+    temperature = list(db.temp.find().sort('time', -1))[0]
+
+    return dumps({'data': temperature, 'response': 200})
 
 def time_until_next_dose(dose_time):
     hour, minute = dose_time['hour'], dose_time['minute']

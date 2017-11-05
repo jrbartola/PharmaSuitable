@@ -5,7 +5,7 @@ class ModuleCollectionItem extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.getRandomInt = this.getRandomInt.bind(this);
+//		this.getRandomInt = this.getRandomInt.bind(this);
 
 	}
 
@@ -15,15 +15,14 @@ class ModuleCollectionItem extends React.Component {
 			<li className={"collection-item avatar"} >
               <img src={"img/" + this.props.image} alt="" className="circle" />
               <span className="title">{this.props.title}</span>
-              <p><i className="material-icons">favorite</i>{this.getRandomInt(72, 85)}</p>
-              {/*<a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>*/}
+              <p><i className="material-icons">{this.props.icon}</i>{this.props.data}</p>
             </li>
 		)
 	}
 
-	getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+//	getRandomInt(min, max) {
+//        return Math.floor(Math.random() * (max - min + 1)) + min;
+//    }
 
 }
 

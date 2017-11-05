@@ -34,8 +34,8 @@ class Collection extends React.Component {
                 }
                 {!this.props.schedule &&
                   <div>
-                    <ModuleCollectionItem image={heartrate.image} title={heartrate.title} data={heartrate.data} />
-                    <ModuleCollectionItem image={temperature.image} title={temperature.title} data={temperature.data} />
+                    <ModuleCollectionItem image={heartrate.image} title={heartrate.title} data={heartrate.data} icon={heartrate.icon} />
+                    <ModuleCollectionItem image={temperature.image} title={temperature.title} data={temperature.data} icon={temperature.icon} />
                     <li>
                      <div className="collapsible-header add-tab"><i className="material-icons">add</i>Add Module</div>
                     </li>

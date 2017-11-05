@@ -10,6 +10,7 @@ class Dashboard extends React.Component {
 
 		this.onTabChange = this.onTabChange.bind(this);
 		this.getPills = this.getPills.bind(this);
+		this.getTemperature = this.getTemperature.bind(this);
 
 		this.state = {
 		  tabs: [],
@@ -70,14 +71,26 @@ class Dashboard extends React.Component {
                 } else {
                     this.setState({selected: this.state.tabs.find(t => t.name == this.state.selected.name)});
                 }
+            }
+        });
+	}
 
-                this.forceUpdate();
+	getTemperature() {
+	    $.get("http://18.221.211.47:3000/api/temperature", (data, _, err) => {
+            console.log(data);
+            if (err.status != 200) {
+                console.err(err);
+            } else {
+                this.setState({temperature: {title: "Temperature", data: JSON.parse(data)['data']['value'], image: "temp.png", icon: "cloud_queue"});
             }
         });
 	}
 
 	componentDidMount() {
-        setInterval(() => this.getPills(), 1000)
+        setInterval(() => {
+          this.getPills();
+          this.getTemperature();
+        }, 1000)}
 	}
 }
 
