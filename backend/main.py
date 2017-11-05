@@ -116,7 +116,7 @@ def refill_pill(pillname):
     time = datetime.now()
 
     pill = db.pills.find_one_and_update({'name': pill_name}, {'$set': {'last_refill':
-            {'day': time.day, 'month': time.month, 'year': time.year}, 'remaining': 30}})
+            {'day': time.day - 1, 'month': time.month - 1, 'year': time.year}, 'remaining': 30}})
 
     return dumps({'data': pill, 'response': 200})
 
