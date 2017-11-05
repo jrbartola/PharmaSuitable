@@ -43,7 +43,7 @@ class Navbar extends React.Component {
 	}
 
 	makeHealthReport() {
-
+        window.href.location = "http://18.221.211.47:3000/pdf";
 	}
 }
 
