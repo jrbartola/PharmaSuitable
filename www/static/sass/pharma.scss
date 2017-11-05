@@ -84,4 +84,11 @@ body {
 
 .streak {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.half {
+  width: 50%;
+  //display: inline !important;
 }

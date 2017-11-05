@@ -57,6 +57,11 @@ body {
   flex-basis: 100%; }
 
 .streak {
-  display: flex; }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+
+.half {
+  width: 50%; }
 
 /*# sourceMappingURL=pharma.css.map */

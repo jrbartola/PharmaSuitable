@@ -67,16 +67,13 @@ class InfoPane extends React.Component {
                   </div>
 
                   <div className="card panel-large blue-grey darken-1">
-                    <div className="card-content white-text">
-                      <span className="card-title">Streak
-                        <div className="streak">
+                    <div className="card-content white-text streak">
+                      <span className="card-title half">Streak</span>
+                        <span className="half right streak">
                           {streaks.map((s, i) =>
-                            <div key={i + "str"} style={{backgroundColor: Math.random() <= 0.5 ? "red" : ""}}>
-                              <p>{s}</p>
-                            </div>
+                              <p key={i + "str"} style={{backgroundColor: Math.random() <= 0.5 ? "red" : ""}}>{s}</p>
                           )}
-                        </div>
-                      </span>
+                        </span>
                       <p>{this.props.selected.fill}</p>
                     </div>
                     <div className="card-action">
