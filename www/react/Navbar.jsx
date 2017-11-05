@@ -6,6 +6,7 @@ class Navbar extends React.Component {
 		super(props);
 
 		this.makeOrder = this.makeOrder.bind(this);
+		this.makeHealthReport = this.makeHealthReport.bind(this);
 	}
 
 	render() {
@@ -17,6 +18,10 @@ class Navbar extends React.Component {
                   <a href="#" className="brand-logo">PharmaSuitable</a>
                   <i className="material-icons right right-padding">person</i>
                   <a href="#" className="right">Sally Smith</a>
+                  <span className="right right-padding">
+                    <a className="waves-effect waves-light btn" onClick={this.makeHealthReport}>Health Report</a>
+                  </span>
+
                 </div>
               }
               {!this.props.outer &&
@@ -35,6 +40,10 @@ class Navbar extends React.Component {
 	makeOrder() {
 	    swal("Success!", "Your order has been placed at CVS Pharmacy on 76 N Pleasant St.", "success");
 	    $.get("http://18.221.211.47:3000/api/reset/" + this.props.selected.name, (data) => console.log(data));
+	}
+
+	makeHealthReport() {
+
 	}
 }
 
