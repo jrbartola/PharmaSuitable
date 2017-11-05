@@ -11,6 +11,9 @@ class Collection extends React.Component {
 
 	render() {
 
+	    const heartrate = this.props.heartrate;
+	    const temperature = this.props.temperature;
+
 		return (
 			<div id="accordion">
 			  <div className="card inner">
@@ -31,9 +34,8 @@ class Collection extends React.Component {
                 }
                 {!this.props.schedule &&
                   <div>
-                    {this.props.tabs.map((t, i) =>
-                      <ModuleCollectionItem key={i + "x"} image={t.image} description={t.description} title={t.title} data={t.data} />
-                    )}
+                    <ModuleCollectionItem image={heartrate.image} title={heartrate.title} data={heartrate.data} />
+                    <ModuleCollectionItem image={temperature.image} title={temperature.title} data={temperature.data} />
                     <li>
                      <div className="collapsible-header add-tab"><i className="material-icons">add</i>Add Module</div>
                     </li>

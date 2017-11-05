@@ -22,7 +22,7 @@
     day: 2,
     month: 10
   },
-  shape: "oblong",
+  shape: "oval",
   color: "white",
   streak: [1, 0, 1, 1, 1, 1, 0]
 },
@@ -51,7 +51,7 @@
     day: 3,
     month: 10
   },
-  shape: "round",
+  shape: "circle",
   color: "white",
   streak: [1, 1, 1, 1, 1, 1, 0]
 },

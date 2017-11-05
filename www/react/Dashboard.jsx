@@ -14,10 +14,8 @@ class Dashboard extends React.Component {
 		this.state = {
 		  tabs: [],
 		  selected: {streak: [0,0,0,0,0,0,0], name: "null", last_refill: {month: -1, day: -1, year: -1}},
-		  modules: [
-		      {title: "Temperature", data: "98.6", image: "temp.png"},
-		      {title: "Heart Rate", data: "82", image: "heartrate.png"}
-		  ]
+		  heartrate: {title: "Heart Rate", data: "--", image: "heartrate.png", icon: "favorite"},
+		  temperature: {title: "Temperature", data: "--", image: "temp.png", icon: "cloud_queue"}
 		}
 
 		this.getPills();
@@ -34,7 +32,7 @@ class Dashboard extends React.Component {
                   <InfoPane tabs={this.state.tabs} selected={this.state.selected} />
                 </div>
                 <div className="col m3">
-                  <Collection title="Health" tabs={this.state.modules} schedule={false} />
+                  <Collection title="Health" heartrate={this.state.heartrate} temperature={this.state.temperature} schedule={false} />
                 </div>
 			  </div>
 			</div>

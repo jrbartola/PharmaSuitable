@@ -145,7 +145,7 @@ def identify_pill(shape, color):
     pill = db.pills.find({'shape': shape, 'color': color})
     response = 200
 
-    if pill is None:
+    if pill is None or len(list(pill)) == 0:
         response = 404
 
     return dumps({'data': pill, 'response': response})
