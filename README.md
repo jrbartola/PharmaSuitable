@@ -77,9 +77,14 @@ As we said earlier, we integrated Amazon Lex into our web interface.  This techn
 "When do I need a refill of *medicine name*?"
 
 "What pill is this?"
+
 > What color is it?
+
 "Pink"
+
 > What shape is it?
+
 "Capsule"
+
 > That pill sounds like Benadryl.  It can treat hay fever, allergies, cold symptoms, and insomnia.
 
