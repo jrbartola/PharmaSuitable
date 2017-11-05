@@ -2,7 +2,7 @@
 
 A pharmaceutical and health monitoring application for the elderly.  While we made a custom smart pill-box, we specifically designed and open-sourced an API for our web interface so that anyone can make their own smart pill-box, or any other pill-tracking device!
 
-
+![Alt text](/dashboard.png "The main dashboard")
 
 ## API
 
