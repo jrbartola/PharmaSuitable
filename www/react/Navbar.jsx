@@ -34,7 +34,7 @@ class Navbar extends React.Component {
 
 	makeOrder() {
 	    swal("Success!", "Your order has been placed at CVS Pharmacy on 76 N Pleasant St.", "success");
-	    $.get("http://18.221.211.47:3000/api/reset", (data) => console.log(data));
+	    $.get("http://18.221.211.47:3000/api/reset/" + this.props.selected.name, (data) => console.log(data));
 	}
 }
 

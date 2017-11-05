@@ -171,10 +171,12 @@ def get_temperature():
     return dumps({'data': temperature, 'response': 200})
 
 # Reset the prescriptions to their original values
-@app.route('/api/reset', methods=['GET'])
+@app.route('/api/reset/<pillname>', methods=['GET'])
 @cross_origin()
-def reset_pills():
+def reset_pills(pillname):
     from bson.json_util import dumps
+
+    pill = pillname.title()
 
     pills_json = [{
   'id': 0,
@@ -262,10 +264,16 @@ def reset_pills():
   'streak': [1, 1, 1, 1, 1, 1, 1]
 }]
 
-    db.pills.remove({})
-    db.pills.insert(pills_json)
+    db.pills.remove({'name': pill})
 
-    return dumps({'data': pills_json, 'response': 200})
+    if pill == pills_json[0]['name']:
+        db.pills.insert(pills_json[0])
+    elif pill == pills_json[1]['name']:
+        db.pills.insert(pills_json[1])
+    elif pill == pills_json[2]['name']:
+        db.pills.insert(pills_json[2])
+
+    return dumps({'data': pill, 'response': 200})
 
 def time_until_next_dose(dose_time):
     hour, minute = dose_time['hour'], dose_time['minute']
