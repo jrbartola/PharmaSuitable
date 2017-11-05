@@ -1,6 +1,8 @@
 # PharmaSuitable
 
-A pharmaceutical and health monitoring application for the elderly.  While we made a custom smart pill-box, we specifically designed and open-sourced an API for our web interface so that anyone can make their own smart pill-box, or any other pill-tracking device!
+A pharmaceutical and health monitoring application for the elderly.  Many adults are unable to leave their elderly relatives home alone, especially, if they fear that their relatives will forget or fail to take necessary medications.  Our project solves this problem by providing a smart pill-box that detects when a pill is removed, as well as a web interface that allows a concerned relative to remotely check on the status of the pill-box and as any other health measurements, such as thermometer measurements.
+
+While we made a custom smart pill-box, we specifically designed and open-sourced an API for our web interface so that anyone can make their own smart pill-box, or any other pill-tracking device!
 
 ![Alt text](/dashboard.png "The main dashboard")
 
@@ -42,17 +44,17 @@ id` (int): unique identifier assigned to pill
     
 `name` (string): name of the pill
  ### Endpoints
- #### `GET: /api/pill/\<pill name>`
+ #### `GET: /api/pill/<pill name>`
  >**Returns** the pill entry of a pill (see pill entry schema)
  #### `GET: /api/pills`
  >**Returns** an array of all pill entries on the server (see pill entry schema)
- #### `GET: /api/ingest/\<pill name>`
+ #### `GET: /api/ingest/<pill name>`
  >Tells the web server that a pill has been removed from the pill box, causing the pill's data to be updated. **Returns** the pill's data from before the update (see pill entry schema)
- #### `GET: /api/refill/\<pill name>`
+ #### `GET: /api/refill/<pill name>`
  >Tells the web server that the supply of a specific pill has been refilled. **Returns** the pill's data from before the update (see pill entry schema)
- #### `GET: /api/identify/\<shape>/\<color>`
+ #### `GET: /api/identify/<shape>/<color>`
  >Queries the server for pills with a matching shape and color (used for integrating with Amazon Lex). **Returns** pill entries for matching pills (see pill entry schema)
- #### `GET: /api/temperature/\<temp>`
+ #### `GET: /api/temperature/<temp>`
  >Tells the web server the most recent measurement of the subject's temperature. **Returns** the temperature value which was sent to the server back to the user
   
  
