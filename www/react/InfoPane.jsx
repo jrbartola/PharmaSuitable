@@ -78,7 +78,7 @@ class InfoPane extends React.Component {
                     </div>
                     <div className="card-action">
                       <div className="progress">
-                        <div className="determinate" style={{width:  + "%"}}></div>
+                        <div className="determinate" style={{width: this.props.selected.streak.reduce((t, e) => t+e) / 7.0 * 100 + "%"}}></div>
                       </div>
                     </div>
                   </div>

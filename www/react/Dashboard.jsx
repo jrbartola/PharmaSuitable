@@ -78,17 +78,6 @@ class Dashboard extends React.Component {
         });
 	}
 
-//	getPill(name) {
-//        $.get("http://18.221.211.47:3000/api/pills/" + name, (data, _, err) => {
-//            console.log(data);
-//            if (err.status != 200) {
-//                console.err(err);
-//            } else {
-//                this.setState({selected: JSON.parse(data)['data']})
-//            }
-//        });
-//	}
-
 	componentDidMount() {
         setInterval(() => this.getPills(), 1000)
 	}
