@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
 
 		this.state = {
 		  tabs: [],
-		  selected: {name: "null", last_refill: {month: -1, day: -1, year: -1}},
+		  selected: {streak: [0,0,0,0,0,0,0], name: "null", last_refill: {month: -1, day: -1, year: -1}},
 		  modules: [
 		      {title: "Temperature", data: "98.6", image: "temp.png"},
 		      {title: "Heart Rate", data: "82", image: "heartrate.png"}
