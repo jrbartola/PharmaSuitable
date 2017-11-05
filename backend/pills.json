@@ -8,7 +8,7 @@
   remaining: 2,
   last_refill: {
     day: 12,
-    month: 10,
+    month: 9,
     year: 2017
   },
   description: "Treats minor aches and pains, and reduces fever",
@@ -20,7 +20,7 @@
     minute: 30,
     hour: 10,
     day: 2,
-    month: 11
+    month: 10
   },
   streak: [1, 0, 1, 1, 1, 1, 0]
 },
@@ -35,7 +35,7 @@
   remaining: 8,
   last_refill: {
     day: 27,
-    month: 10,
+    month: 9,
     year: 2017
   },
   description: "Treats moderate to severe pain",
@@ -47,7 +47,7 @@
     minute: 45,
     hour: 12,
     day: 3,
-    month: 11
+    month: 10
   },
   streak: [1, 1, 1, 1, 1, 1, 0]
 },
@@ -61,7 +61,7 @@
   remaining: 27,
   last_refill: {
     day: 1,
-    month: 11,
+    month: 10,
     year: 2017
   },
   description: "It can treat hay fever, allergies, cold symptoms, and insomnia",
@@ -73,7 +73,7 @@
     minute: 0,
     hour: 15,
     day: 3,
-    month: 11
+    month: 10
   },
   streak: [1, 1, 1, 1, 1, 1, 1]
 }]

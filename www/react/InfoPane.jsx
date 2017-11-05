@@ -78,7 +78,7 @@ class InfoPane extends React.Component {
                     </div>
                     <div className="card-action">
                       <div className="progress">
-                        <div className="determinate" style={{width: "90%"}}></div>
+                        <div className="determinate" style={{width:  + "%"}}></div>
                       </div>
                     </div>
                   </div>
