@@ -141,10 +141,10 @@ def time_until_next_dose(dose_time):
 def identify_pill(shape, color):
     from bson.json_util import dumps
 
-    pill = db.pills.find({'shape': shape, 'color': color})
+    pill = db.pills.find_one({'shape': shape, 'color': color})
     response = 200
 
-    if pill is None or len(list(pill)) == 0:
+    if pill is None:
         response = 404
 
     return dumps({'data': pill, 'response': response})
