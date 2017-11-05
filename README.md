@@ -72,11 +72,11 @@ print("Your pill is: " + r.json()['data']['name']")
 ## Amazon Lex
 As we said earlier, we integrated Amazon Lex into our web interface.  This technology is essential to allowing the elderly to get information from the web interface.  While most of the web interface is designed for relatives with at least some computer experience, Lex can be used by anyone who can talk. Here are just some of the questions you can ask Lex:
 
-"When am I taking *medicine name* next?"
+* "When am I taking *medicine name* next?"
 
-"When do I need a refill of *medicine name*?"
+* "When do I need a refill of *medicine name*?"
 
-"What pill is this?"
+* "What pill is this?"
 
 > What color is it?
 
