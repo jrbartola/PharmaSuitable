@@ -100,7 +100,7 @@ def ingest_pill(pillname):
 
     pill = db.pills.find_one({'name': pill_name})
 
-    if pill is not None and pill['remaining'] != 0:
+    if pill is not None and pill['remaining'] < 0:
         pill = db.pills.find_one_and_update({'name': pill_name}, {'$inc': {'remaining': -1}, '$set': {'last_taken':
                                             {'minute': time.minute, 'hour': time.hour, 'day': time.day, 'month': time.month}}})
 
@@ -120,6 +120,45 @@ def refill_pill(pillname):
 
     return dumps({'data': pill, 'response': 200})
 
+
+def time_until_next_dose(dose_time):
+    hour, minute = dose_time['hour'], dose_time['minute']
+    time = datetime.now()
+
+    # If we have yet to take the pill today
+    if hour >= time.hour and minute >= time.minute:
+        td = datetime(time.year, time.month, time.day, int(hour), int(minute)) - time
+        next_dose = {'hour': int(td.seconds / 3600), 'minute': int(td.seconds / 60 % 60)}
+    else:
+        td = datetime(time.year, time.month, int(time.day + 1), int(hour), int(minute)) - time
+        next_dose = {'hour': int(td.seconds / 3600), 'minute': int(td.seconds / 60 % 60)}
+
+    return next_dose
+
+# API Route for asking Lex to identify shape and color
+@app.route('/api/identify/<shape>/<color>', methods=['GET'])
+@cross_origin()
+def identify_pill(shape, color):
+    from bson.json_util import dumps
+    time = datetime.now()
+
+    pill = db.pills.find({'shape': shape, 'color': color})
+    response = 200
+
+    if pill is None:
+        response = 404
+
+    return dumps({'data': pill, 'response': response})
+
+# API Route for posting temperature data
+@app.route('/api/temperature/<temp>', methods=['GET'])
+@cross_origin()
+def send_temperature(temp):
+    from bson.json_util import dumps
+
+    data_temp = db.temp.insert_one({'value': temp})
+
+    return dumps({'data': data_temp, 'response': 200})
 
 def time_until_next_dose(dose_time):
     hour, minute = dose_time['hour'], dose_time['minute']
