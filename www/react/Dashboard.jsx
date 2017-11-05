@@ -1,4 +1,5 @@
 import React from 'react';
+import swal from 'sweetalert';
 
 import Collection from './Collection.jsx';
 import InfoPane from './InfoPane.jsx';
@@ -42,6 +43,20 @@ class Dashboard extends React.Component {
 
 	onTabChange(index) {
 	    const tab = this.state.tabs[index];
+	    if (tab.remaining == 0) {
+	        swal({
+	            title: "Urgent!",
+	            text: "You required a new prescription for " + tab.name + ". Would you like to place an order?",
+	            buttons: {
+                    cancel: true,
+                    confirm: "Yes",
+                    roll: {
+                        text: "Do a barrell roll!",
+                        value: "roll",
+                    },
+                },
+	        })
+	    }
 	    this.setState({selected: tab});
 	}
 
