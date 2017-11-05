@@ -100,7 +100,7 @@ def ingest_pill(pillname):
 
     pill = db.pills.find_one({'name': pill_name})
 
-    if pill is not None and pill['remaining'] < 0:
+    if pill is not None and pill['remaining'] > 0:
         pill = db.pills.find_one_and_update({'name': pill_name}, {'$inc': {'remaining': -1}, '$set': {'last_taken':
                                             {'minute': time.minute, 'hour': time.hour, 'day': time.day, 'month': time.month}}})
 
