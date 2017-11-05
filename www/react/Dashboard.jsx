@@ -81,7 +81,7 @@ class Dashboard extends React.Component {
             if (err.status != 200) {
                 console.err(err);
             } else {
-                this.setState({temperature: {title: "Temperature", data: JSON.parse(data)['data']['value'], image: "temp.png", icon: "cloud_queue"});
+                this.setState({temperature: {title: "Temperature", data: JSON.parse(data)['data']['value'], image: "temp.png", icon: "cloud_queue"}});
             }
         });
 	}
