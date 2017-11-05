@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 
@@ -24,6 +24,12 @@ if app.debug is not True:
 @app.route("/")
 def hello():
     return "Entry point.."
+
+# Route to download PDF summary
+@app.route('/pdf', methods=['GET'])
+@cross_origin()
+def get_pdf():
+    return send_from_directory('../www/static/', 'PharmaSuitable.pdf')
 
 
 # API Route for pill information
