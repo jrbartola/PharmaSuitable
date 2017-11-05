@@ -27,13 +27,13 @@ class Dashboard extends React.Component {
 		return (
 			<div id="dashboard">
 			  <div className="row">
-			    <div className="col s3">
+			    <div className="col m3">
                   <Collection title="Schedule" tabs={this.state.tabs} onTabChange={this.onTabChange} selected={this.state.selected} schedule={true} />
                 </div>
-                <div className="col s6">
+                <div className="col m6">
                   <InfoPane tabs={this.state.tabs} selected={this.state.selected} />
                 </div>
-                <div className="col s3">
+                <div className="col m3">
                   <Collection title="Health" tabs={this.state.modules} schedule={false} />
                 </div>
 			  </div>
