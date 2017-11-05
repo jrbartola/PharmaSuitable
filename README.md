@@ -1,6 +1,6 @@
 # PharmaSuitable
 
-A pharmaceutical and health monitoring application for the elderly.  Many adults are unable to leave their elderly relatives home alone, especially, if they fear that their relatives will forget or fail to take necessary medications.  Our project solves this problem by providing a smart pill-box that detects when a pill is removed, as well as a web interface that allows a concerned relative to remotely check on the status of the pill-box and as any other health measurements, such as thermometer measurements.
+A pharmaceutical and health monitoring application for the elderly.  Many adults are unable to leave their elderly relatives home alone, especially, if they fear that their relatives will forget or fail to take necessary medications.  Our project solves this problem by providing a smart pill-box that detects when a pill is removed, as well as a web interface that allows a concerned relative to remotely check on the status of the pill-box and as any other health measurements, such as thermometer measurements. Additionally, we integrated Amazon Lex into our web interface, allowing many elderly patients to use the web interface to get data on their medication, even if they are unable to use a computer.
 
 While we made a custom smart pill-box, we specifically designed and open-sourced an API for our web interface so that anyone can make their own smart pill-box, or any other pill-tracking device!
 
@@ -68,3 +68,18 @@ color = input("What color is your pill?\n")
 r = requests.get(serverDomain + '/api/temperature/' + shape/' + 'color'
 print("Your pill is: " + r.json()['data']['name']")
 ```
+
+## Amazon Lex
+As we said earlier, we integrated Amazon Lex into our web interface.  This technology is essential to allowing the elderly to get information from the web interface.  While most of the web interface is designed for relatives with at least some computer experience, Lex can be used by anyone who can talk. Here are just some of the questions you can ask Lex:
+
+"When am I taking *medicine name* next?"
+
+"When do I need a refill of *medicine name*?"
+
+"What pill is this?"
+> What color is it?
+"Pink"
+> What shape is it?
+"Capsule"
+> That pill sounds like Benadryl.  It can treat hay fever, allergies, cold symptoms, and insomnia.
+
