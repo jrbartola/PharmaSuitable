@@ -43,24 +43,16 @@ id` (int): unique identifier assigned to pill
 `name` (string): name of the pill
  ### Endpoints
  #### `GET: /api/pill/\<pill name>`
- >returns the pill entry of a pill (see pill entry schema)
+ >**Returns** the pill entry of a pill (see pill entry schema)
  #### `GET: /api/pills`
- >returns an array of all pill entries in the web interface (see pill entry schema)
+ >**Returns** an array of all pill entries in the web interface (see pill entry schema)
  #### `GET: /api/ingest/\<pill name>`
- >tells the web server that a pill has been removed from the pill box, causing the pill's data to be updated.
- 
- >returns the pill's data from before the update (see pill entry schema)
+ >Tells the web server that a pill has been removed from the pill box, causing the pill's data to be updated. **Returns** the pill's data from before the update (see pill entry schema)
  #### `GET: /api/refill/\<pill name>`
- >tells the web server that the supply of a specific pill has been refilled
- 
- >returns the pill's data from before the update (see pill entry schema)
+ >Tells the web server that the supply of a specific pill has been refilled. **Returns** the pill's data from before the update (see pill entry schema)
  #### `GET: /api/identify/\<shape>/\<color>`
- >queries the server for pills with a matching shape and color (used for integrating with Amazon Lex)
- 
- >returns pill entries for matching pills (see pill entry schema)
+ >Queries the server for pills with a matching shape and color (used for integrating with Amazon Lex). **Returns** pill entries for matching pills (see pill entry schema)
  #### `GET: /api/temperature/\<temp>`
- >tells the web server the most recent measurement of the subject's temperature
- 
- >returns the temperature value which was sent to the server back to the user
+ >Tells the web server the most recent measurement of the subject's temperature. **Returns** the temperature value which was sent to the server back to the user
   
  
