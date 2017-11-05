@@ -71,7 +71,7 @@ class InfoPane extends React.Component {
                       <span className="card-title half">Streak</span>
                         <span className="half right streak">
                           {streaks.map((s, i) =>
-                              <p key={i + "str"} style={{backgroundColor: Math.random() <= 0.5 ? "red" : ""}}>{s}</p>
+                              <p key={i + "str"} style={{backgroundColor: this.props.selected.streak[i] == 1.0 "green" : "red"}}>{s}</p>
                           )}
                         </span>
                       <p>{this.props.selected.fill}</p>
