@@ -41,9 +41,9 @@ def pill_route(pillname):
         if pill is None:
             response = 404
         else:
-            if pill['remaining'] <= 5:
+            if pill['remaining'] <= 2:
                 pill['color'] = 'red'
-            elif pill['remaining'] <= 10:
+            elif pill['remaining'] <= 3:
                 pill['color'] = 'orange'
             else:
                 pill['color'] = 'green'
@@ -76,9 +76,9 @@ def all_pills():
         p['next_dose'] = time_until_next_dose(p['dose_time'])
         p['time_since_refill'] = time_since_refill(p['last_refill'])
 
-        if p['remaining'] <= 5:
+        if p['remaining'] <= 2:
             p['color'] = 'red'
-        elif p['remaining'] <= 10:
+        elif p['remaining'] <= 3:
             p['color'] = 'orange'
         else:
             p['color'] = 'green'

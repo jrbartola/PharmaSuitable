@@ -18,8 +18,8 @@ class InfoPane extends React.Component {
 
 	render() {
 
-	    const remainingFraction = (this.props.selected.remaining / 30.0) * 100;
-	    const remainingColor = remainingFraction <= 17.0 ? "red" : (remainingFraction <= 33.0 ? "orange" : "");
+	    const remainingFraction = (this.props.selected.remaining / 5.0) * 100;
+	    const remainingColor = remainingFraction <= 40.0 ? "red" : (remainingFraction <= 60.0 ? "orange" : "");
 
 
 	    const remainingStyle = {width: remainingFraction + "%",
@@ -43,7 +43,7 @@ class InfoPane extends React.Component {
                       <span className="card-title">Remaining
                       <i className="material-icons right right-padding">bubble_chart</i>
                       </span>
-                      <p>{this.props.selected.remaining} out of 30</p>
+                      <p>{this.props.selected.remaining} out of 5</p>
                     </div>
                     <div className="card-action">
                       <div className="progress">

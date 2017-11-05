@@ -34,7 +34,7 @@
     amount: 50,
     unit: "mg"
   },
-  remaining: 8,
+  remaining: 3,
   last_refill: {
     day: 27,
     month: 9,
@@ -62,7 +62,7 @@
     amount: 100,
     unit: "mg"
   },
-  remaining: 27,
+  remaining: 4,
   last_refill: {
     day: 1,
     month: 10,
