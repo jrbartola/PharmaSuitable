@@ -140,7 +140,6 @@ def time_until_next_dose(dose_time):
 @cross_origin()
 def identify_pill(shape, color):
     from bson.json_util import dumps
-    time = datetime.now()
 
     pill = db.pills.find({'shape': shape, 'color': color})
     response = 200
