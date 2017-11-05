@@ -170,6 +170,103 @@ def get_temperature():
 
     return dumps({'data': temperature, 'response': 200})
 
+# Reset the prescriptions to their original values
+@app.route('/api/reset', methods=['GET'])
+@cross_origin()
+def reset_pills():
+    from bson.json_util import dumps
+
+    pills_json = [{
+  'id': 0,
+  'name': "Tylenol",
+  'dose': {
+    'amount': 800,
+    'unit': "mg"
+  },
+  'remaining': 2,
+  'last_refill': {
+    'day': 12,
+    'month': 9,
+    'year': 2017
+  },
+  'description': "Treats minor aches and pains, and reduces fever",
+  'dose_time': {
+    'hour': 10,
+    'minute': 30
+  },
+  'last_taken': {
+    'minute': 30,
+    'hour': 10,
+    'day': 2,
+    'month': 10
+  },
+  'shape': "oval",
+  'color': "white",
+  'streak': [1, 0, 1, 1, 1, 1, 0]
+},
+
+{
+  'id': 1,
+  'name': "Tramadol",
+  'dose': {
+    'amount': 50,
+    'unit': "mg"
+  },
+  'remaining': 3,
+  'last_refill': {
+    'day': 27,
+    'month': 9,
+    'year': 2017
+  },
+  'description': "Treats moderate to severe pain",
+  'dose_time': {
+    'hour': 12,
+    'minute': 45
+  },
+  'last_taken': {
+    'minute': 45,
+    'hour': 12,
+    'day': 3,
+    'month': 10
+  },
+  'shape': "circle",
+  'color': "white",
+  'streak': [1, 1, 1, 1, 1, 1, 0]
+},
+  {
+  'id': 2,
+  'name': "Benadryl",
+  'dose': {
+    'amount': 100,
+    'unit': "mg"
+  },
+  'remaining': 4,
+  'last_refill': {
+    'day': 1,
+    'month': 10,
+    'year': 2017
+  },
+  'description': "It can treat hay fever, allergies, cold symptoms, and insomnia",
+  'dose_time': {
+    'hour': 15,
+    'minute': 0
+  },
+  'last_taken': {
+    'minute': 0,
+    'hour': 15,
+    'day': 3,
+    'month': 10
+  },
+  'shape': "capsule",
+  'color': "pink",
+  'streak': [1, 1, 1, 1, 1, 1, 1]
+}]
+
+    db.pills.remove({})
+    db.pills.insert(pills_json)
+
+    return dumps({'data': pills_json, 'response': 200})
+
 def time_until_next_dose(dose_time):
     hour, minute = dose_time['hour'], dose_time['minute']
     time = datetime.now()
